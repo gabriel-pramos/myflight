@@ -38,4 +38,16 @@ public class Voo {
 	public void setStatus(Status novo) {
 		this.status = novo;
 	}
+
+
+	@Override
+	public String toString() {
+		return "{" +
+			" datahora='" + getDatahora() + "'" +
+			", duracao='" + getDuracao() + "'" +
+			", rota='" + getRota() + "'" +
+			", status='" + getStatus() + "'" +
+			"}";
+	}
+
 }

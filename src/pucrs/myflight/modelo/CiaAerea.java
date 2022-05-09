@@ -15,5 +15,15 @@ public class CiaAerea {
 	
 	public String getNome() {
 		return nome;
-	}	
+	}
+	
+
+	@Override
+	public String toString() {
+		return "{" +
+			" codigo='" + getCodigo() + "'" +
+			", nome='" + getNome() + "'" +
+			"}";
+	}
+	
 }

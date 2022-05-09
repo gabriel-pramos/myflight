@@ -28,4 +28,16 @@ public class Rota {
 	public Aeronave getAeronave() {
 		return aeronave;
 	}
+
+	@Override
+	public String toString() {
+		return "{" +
+			" cia='" + getCia() + "'" +
+			", origem='" + getOrigem() + "'" +
+			", destino='" + getDestino() + "'" +
+			", aeronave='" + getAeronave() + "'" +
+			"}";
+	}
+
 }
+

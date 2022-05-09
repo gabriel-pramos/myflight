@@ -57,7 +57,9 @@ public class App {
 		voos.adicionar(new Voo(r2, LocalDateTime.of(2016, 8, 10, 15, 0), Duration.ofMinutes(120)));
 		voos.adicionar(new Voo(r3, LocalDateTime.of(2016, 8, 15, 12, 0), Duration.ofMinutes(120)));
 
-		System.out.print(voos.listarTodos());
+		System.out.println(voos.listarTodos());
+
+		System.out.print("\n\n\n\n\n");
 
 
 		// Utilizando Gerenciador universal
@@ -87,7 +89,74 @@ public class App {
 		g.adicionar(new Voo(r1, LocalDateTime.of(2016, 8, 10, 8, 0), Duration.ofMinutes(90)));
 		g.adicionar(new Voo(r2, LocalDateTime.of(2016, 8, 10, 15, 0), Duration.ofMinutes(120)));
 		g.adicionar(new Voo(r3, LocalDateTime.of(2016, 8, 15, 12, 0), Duration.ofMinutes(120)));
+		g.adicionar(new Voo(r4, Duration.ofMinutes(70))); // Construtor sem data e hora
 
-		System.out.print(g.getVoos());
+		System.out.println(g.getVoos());
+
+		System.out.print("\n\n\n\n\n");
+
+
+
+		// Distancia entre pontos
+
+		Aeroporto POA = g.getAeroportos().buscarPorCodigo("POA");
+		Aeroporto GRU = g.getAeroportos().buscarPorCodigo("GRU");
+
+		System.out.println("Distancia POA - GRU: " + Geo.distancia(POA.getLocal(), GRU.getLocal()));
+		System.out.println("Distancia GRU - POA: " + GRU.getLocal().distancia(POA.getLocal()));
+		System.out.println("Distancia GRU - GRU: " + GRU.getLocal().distancia(GRU.getLocal()));
+
+		System.out.print("\n\n\n\n\n");
+
+
+		// Imprimir contadores
+
+		System.out.println("Contador de Cias: "+ CiaAerea.Contar());
+
+		// Interface Contavel
+
+		Aeronave aeronave01 = g.getAeronaves().buscarPorCodigo("73G");
+		System.out.println("Contador de Aeronaves: "+ aeronave01.Contar());
+
+		System.out.print("\n\n\n\n\n");
+
+
+		// Interface Comparable
+
+		System.out.println("Aeronaves Antes:");
+		System.out.println(g.getAeronaves().toString());
+		System.out.print("\n");
+
+		g.getAeronaves().ordenaDescricao();
+
+		System.out.println("Aeronaves Depois:");
+		System.out.println(g.getAeronaves().toString());
+		System.out.print("\n\n");
+
+		//-
+
+		System.out.println("Rotas Antes:");
+		System.out.println(g.getRotas().toString());
+		System.out.print("\n");
+
+		g.getRotas().ordenaNomeCia();
+
+		System.out.println("Rotas Depois:");
+		System.out.println(g.getRotas().toString());
+		System.out.print("\n\n");
+
+		//-
+
+		System.out.println("Aeroportos Antes:");
+		System.out.println(g.getAeroportos().toString());
+		System.out.print("\n");
+
+		g.getAeroportos().ordenaNome();
+
+		System.out.println("Aeroportos Depois:");
+		System.out.println(g.getAeroportos().toString());
+		System.out.print("\n\n");
+
+
 	}
 }

@@ -49,12 +49,7 @@ public class Voo {
 
 	@Override
 	public String toString() {
-		return "{" +
-			" datahora='" + getDatahora() + "'" +
-			", duracao='" + getDuracao() + "'" +
-			", rota='" + getRota() + "'" +
-			", status='" + getStatus() + "'" +
-			"}";
+		return status + " " + datahora + "("+duracao+"): " + rota ;
 	}
 
 }

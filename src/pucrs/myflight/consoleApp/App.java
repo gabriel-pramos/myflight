@@ -2,6 +2,8 @@ package pucrs.myflight.consoleApp;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import pucrs.myflight.modelo.Aeronave;
 import pucrs.myflight.modelo.Aeroporto;
@@ -13,6 +15,8 @@ import pucrs.myflight.modelo.GerenciadorRotas;
 import pucrs.myflight.modelo.GerenciadorVoos;
 import pucrs.myflight.modelo.Rota;
 import pucrs.myflight.modelo.Voo;
+import pucrs.myflight.modelo.VooEscalas;
+import pucrs.myflight.modelo.VooVariasEscalas;
 import pucrs.myflight.modelo.Geo;
 import pucrs.myflight.modelo.Gerenciador;
 
@@ -156,6 +160,24 @@ public class App {
 		System.out.println("Aeroportos Depois:");
 		System.out.println(g.getAeroportos().toString());
 		System.out.print("\n\n");
+
+
+
+
+		// Voo, VooEscalas, VooVariasEscalas
+
+		Voo v1 = new Voo(r1, LocalDateTime.of(2022, 5, 1, 4, 30), Duration.ofMinutes(90));
+		System.out.println("v1: " + v1);
+		System.out.print("\n");
+
+		Voo v2 = new VooEscalas(r1, r2, LocalDateTime.of(2022, 5, 1, 4, 30), Duration.ofMinutes(90));
+		System.out.println("v2: " + v2);
+		System.out.print("\n");
+
+		// Essa implementacao nao ficou boa, como VooVariasEscalas herda de Voo, precisamos informar a rota, o que nao faz sentido nesse caso.
+		Voo v3 = new VooVariasEscalas(r1, LocalDateTime.of(2022, 5, 1, 4, 30), Duration.ofMinutes(90), new ArrayList<Rota>(Arrays. asList(r1,r2,r3,r4)));
+		System.out.println("v3: " + v3);
+		System.out.print("\n");
 
 
 	}

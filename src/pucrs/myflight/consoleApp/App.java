@@ -1,6 +1,5 @@
 package pucrs.myflight.consoleApp;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +15,7 @@ import pucrs.myflight.modelo.GerenciadorVoos;
 import pucrs.myflight.modelo.Rota;
 import pucrs.myflight.modelo.Voo;
 import pucrs.myflight.modelo.VooEscalas;
-import pucrs.myflight.modelo.VooVariasEscalas;
+import pucrs.myflight.modelo.VooDireto;
 import pucrs.myflight.modelo.Geo;
 import pucrs.myflight.modelo.Gerenciador;
 
@@ -57,9 +56,9 @@ public class App {
 		rotas.adicionar(r3);
 		rotas.adicionar(r4);
 
-		voos.adicionar(new Voo(r1, LocalDateTime.of(2016, 8, 10, 8, 0), Duration.ofMinutes(90)));
-		voos.adicionar(new Voo(r2, LocalDateTime.of(2016, 8, 10, 15, 0), Duration.ofMinutes(120)));
-		voos.adicionar(new Voo(r3, LocalDateTime.of(2016, 8, 15, 12, 0), Duration.ofMinutes(120)));
+		voos.adicionar(new VooDireto(r1, LocalDateTime.of(2016, 8, 10, 8, 0)));
+		voos.adicionar(new VooDireto(r2, LocalDateTime.of(2016, 8, 10, 15, 0)));
+		voos.adicionar(new VooDireto(r3, LocalDateTime.of(2016, 8, 15, 12, 0)));
 
 		System.out.println(voos.listarTodos());
 
@@ -90,10 +89,10 @@ public class App {
 		g.adicionar(r3);
 		g.adicionar(r4);
 
-		g.adicionar(new Voo(r1, LocalDateTime.of(2016, 8, 10, 8, 0), Duration.ofMinutes(90)));
-		g.adicionar(new Voo(r2, LocalDateTime.of(2016, 8, 10, 15, 0), Duration.ofMinutes(120)));
-		g.adicionar(new Voo(r3, LocalDateTime.of(2016, 8, 15, 12, 0), Duration.ofMinutes(120)));
-		g.adicionar(new Voo(r4, Duration.ofMinutes(70))); // Construtor sem data e hora
+		g.adicionar(new VooDireto(r1, LocalDateTime.of(2016, 8, 10, 8, 0)));
+		g.adicionar(new VooDireto(r2, LocalDateTime.of(2016, 8, 10, 15, 0)));
+		g.adicionar(new VooDireto(r3, LocalDateTime.of(2016, 8, 15, 12, 0)));
+		g.adicionar(new VooDireto(r4, LocalDateTime.of(2016, 8, 16, 15, 30)));
 
 		System.out.println(g.getVoos());
 
@@ -163,6 +162,7 @@ public class App {
 
 
 
+		/* Antes de usar Polimorfismo
 
 		// Voo, VooEscalas, VooVariasEscalas
 
@@ -178,6 +178,19 @@ public class App {
 		Voo v3 = new VooVariasEscalas(r1, LocalDateTime.of(2022, 5, 1, 4, 30), Duration.ofMinutes(90), new ArrayList<Rota>(Arrays. asList(r1,r2,r3,r4)));
 		System.out.println("v3: " + v3);
 		System.out.print("\n");
+
+		*/
+
+		Voo v1 = new VooDireto(r1, LocalDateTime.of(2022, 5, 1, 4, 30));
+		System.out.println("v1: " + v1);
+		System.out.print("\n");
+
+		Voo v2 = new VooEscalas(new ArrayList<Rota>(Arrays. asList(r1,r2,r3,r4)), LocalDateTime.of(2022, 5, 1, 4, 30));
+		System.out.println("v2: " + v2);
+		System.out.print("\n");
+
+
+
 
 
 	}
